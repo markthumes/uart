@@ -1,0 +1,36 @@
+set = "STATE_MACHINE"
+width = 32
+
+[formats]
+names = ["states"]
+parts = [
+    [
+        "state",
+        32,
+        "u32",
+    ],
+]
+
+[types]
+names = ["STATE"]
+STATE = [
+    { name = "state", top = 31, bot = 0 },
+]
+
+[states]
+type = "STATE"
+[states.repr]
+default = "$name$"
+[states.instructions]
+IDLE 		= { mask = 0xffffffff, match = 0x00 }
+START	 	= { mask = 0xffffffff, match = 0x01 }
+DATA	 	= { mask = 0xffffffff, match = 0x02 }
+STOP 		= { mask = 0xffffffff, match = 0x03 }
+
+##Not sure what this does
+[mappings]
+names = ["Register_int"]
+number = 6
+Register_int = [
+    "unknown"
+]
